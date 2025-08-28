@@ -24,8 +24,15 @@ echo $HELM_CHART_PAT | docker login ghcr.io -u supanut741355 --password-stdin
 ### Helm push
 
 ```
-$ helm push <chart_zip_file> oci//ghcr.io/<github_account_name>/<github_repo_name>
+helm push <chart_zip_file> oci//ghcr.io/<github_account_name>/<github_repo_name>
 
 eg.
-$ helm push omegared-0.1.0.tgz oci://ghcr.io/supanut741355/dev_space
+helm push omegared-0.1.0.tgz oci://ghcr.io/supanut741355/dev_space
+```
+
+
+### Index page
+
+```
+helm repo index . --url <github_page_url>
 ```
