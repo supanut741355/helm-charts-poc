@@ -3,7 +3,27 @@ entries:
   omegared:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-08-29T15:10:37.953073+07:00"
+    created: "2025-09-02T07:22:27.245126801Z"
+    description: A Helm chart for Kubernetes
+    digest: b16ef1d362f20565fd072bfcbd2460ee79b0af9709c1293049d994e1b9899a00
+    name: omegared
+    type: application
+    urls:
+    - https://supanut741355.github.io/helm-charts-poc/omegared-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-02T07:22:27.244829101Z"
+    description: A Helm chart for Kubernetes
+    digest: 6bde53f946346a976c330fe54df65a581e8b96b331fba734c2ce6c0073a1260c
+    name: omegared
+    type: application
+    urls:
+    - https://supanut741355.github.io/helm-charts-poc/omegared-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-02T07:22:27.244510731Z"
     description: A Helm chart for Kubernetes
     digest: df8a21672cf5fa579bbe3b1caa5ea1249c5dbef3c643f480b7dc8ec3e8d47959
     name: omegared
@@ -13,7 +33,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-08-29T15:10:37.952618+07:00"
+    created: "2025-09-02T07:22:27.244092033Z"
     description: A Helm chart for Kubernetes
     digest: 8b7b0b45ac13cfb1701ead5fd21819ef610575dc7729be15d19f828ac6d353b8
     name: omegared
@@ -21,4 +41,4 @@ entries:
     urls:
     - https://supanut741355.github.io/helm-charts-poc/omegared-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-29T15:10:37.951396+07:00"
+generated: "2025-09-02T07:22:27.24361823Z"
