@@ -2,9 +2,9 @@ name: Helm CI
 
 on:
   push:
-    branches: [ "deploy_prod" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "deploy_prod" ]
+    branches: [ "main" ]
 
 env:
   # TODO  this env can be fix
