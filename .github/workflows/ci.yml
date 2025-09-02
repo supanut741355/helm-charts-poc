@@ -97,7 +97,7 @@ jobs:
         run: |
           git config user.name "supanut741355"
           git config user.email "supanut.wizard@gmail.com"
-          git add -A
+          git add index.yaml 
           git commit -m "Update Helm repo index"
           git push origin gh-pages
 
