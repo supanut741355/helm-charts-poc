@@ -66,4 +66,4 @@ jobs:
 
       - name: helm_push
         run: |
-          helm push $CHART_NAME-$CHART_VERSION.tgz oci://ghcr.io/$GITHUB_ACCOUNT_NAME/$GITHUB_REPO_NAME
+          helm push $CHART_NAME-$CHART_VERSION.tgz oci://ghcr.io/$GITHUB_ACCOUNT_NAME/dev_space
