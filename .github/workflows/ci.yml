@@ -39,8 +39,8 @@ jobs:
       - name: upload helm package to artifact
         uses: actions/upload-artifact@v4
         with:
-          name: helm_package
-          path: ./*.tgz
+          name: $CHART_NAME-$CHART_VERSION.tgz
+          path: ./
 
 
   helm_push:
@@ -57,8 +57,8 @@ jobs:
       - name: Download helm package
         uses: actions/download-artifact@v4
         with:
-          name: helm_package
-          path: ./helm_packages
+          name: $CHART_NAME-$CHART_VERSION.tgz
+          path: ./
 
       - name: debug
         run: |
