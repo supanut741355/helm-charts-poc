@@ -94,7 +94,7 @@ jobs:
           helm repo index . --url $GITHUB_PAGE_URL
 
       - name: Commit and Push index.yaml
-        run:
+        run: |
           git config user.name "supanut741355"
           git config user.email "supanut.wizard@gmail.com"
           git add -A
