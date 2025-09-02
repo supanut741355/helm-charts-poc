@@ -32,6 +32,13 @@ jobs:
         run: |
           helm package ./omegared
 
+      - name: upload helm package to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: helm_package
+          path: ./helm_packages/*.tgz
+
+
   helm_push:
     needs: helm_package
     runs-on: ubuntu-latest
@@ -42,6 +49,12 @@ jobs:
         run: |
           echo $HELM_CHART_GHCR_PAT_KEY | docker login ghcr.io -u $GITHUB_ACCOUNT_NAME --password-stdin
 
+
+      - name: Download helm package
+        uses: actions/download-artifact@v4
+        with:
+          name: helm_package
+          path: ./helm_packages
 
       - name: debug
         run: |
