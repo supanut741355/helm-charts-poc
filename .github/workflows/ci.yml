@@ -1,0 +1,47 @@
+name: Helm CI
+
+on:
+  push:
+    branches: [ "deploy_prod" ]
+  pull_request:
+    branches: [ "deploy_prod" ]
+
+env:
+  # TODO  this env can be fix
+  GITHUB_ACCOUNT_NAME: supanut741355
+  GITHUB_REPO_NAME: helm-charts-poc
+
+  # TODO this env should get value from Chart.yaml
+  CHART_NAME: omegared
+  CHART_VERSION: 0.4.0
+
+
+jobs:
+  helm_package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.15.4
+
+      - name: Pack Helm Chart
+        run: |
+          helm package ./omegared
+
+  helm_push:
+    needs: helm_package
+    steps:
+      - name: Authen GHCR
+        env:
+          HELM_CHART_GHCR_PAT_KEY: ${{ secrets.HELM_CHART_GHCR_PAT_KEY}}
+        run: |
+          echo $HELM_CHART_GHCR_PAT_KEY | docker login ghcr.io -u $GITHUB_ACCOUNT_NAME --password-stdin
+
+
+      - name: helm_push
+        run: |
+          helm push $CHART_NAME-$CHART_VERSION.tgz oci://ghcr.io/$GITHUB_ACCOUNT_NAME/$GITHUB_REPO_NAME
