@@ -9,7 +9,8 @@ on:
 env:
   # TODO  this env can be fix
   GITHUB_ACCOUNT_NAME: supanut741355
-  GITHUB_REPO_NAME: helm-charts-poc
+  GITHUB_REGISTRY_NAME: dev_space
+  GITHUB_PAGE_URL: https://supanut741355.github.io/helm-charts-poc/
 
   # TODO this env should get value from Chart.yaml
   CHART_NAME: omegared
@@ -66,4 +67,38 @@ jobs:
 
       - name: helm_push
         run: |
-          helm push $CHART_NAME-$CHART_VERSION.tgz oci://ghcr.io/$GITHUB_ACCOUNT_NAME/dev_space
+          helm push $CHART_NAME-$CHART_VERSION.tgz oci://ghcr.io/$GITHUB_ACCOUNT_NAME/$GITHUB_REGISTRY_NAME
+
+  helm_update_index:
+    needs: helm_push
+    runs-on: ubuntu-latest
+    steps: 
+      - name: check out gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Download helm package
+        uses: actions/download-artifact@v4
+        with:
+          name: $CHART_NAME-$CHART_VERSION.tgz
+          path: ./
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.15.4
+
+      - name: Update Helm repo index
+        run: |
+          helm repo index . --url $GITHUB_PAGE_URL
+
+      - name: Commit and Push index.yaml
+        run:
+          git config user.name "supanut741355"
+          git config user.email "supanut.wizard@gmail.com"
+          git add -A
+          git commit -m "Update Helm repo index"
+          git push origin gh-pages
+
+
