@@ -43,6 +43,10 @@ jobs:
           echo $HELM_CHART_GHCR_PAT_KEY | docker login ghcr.io -u $GITHUB_ACCOUNT_NAME --password-stdin
 
 
+      - name: debug
+        run: |
+          ls -l
+
       - name: helm_push
         run: |
           helm push $CHART_NAME-$CHART_VERSION.tgz oci://ghcr.io/$GITHUB_ACCOUNT_NAME/$GITHUB_REPO_NAME
