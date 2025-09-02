@@ -32,11 +32,15 @@ jobs:
         run: |
           helm package ./omegared
 
+      - name: debug
+        run: |
+          ls -l
+
       - name: upload helm package to artifact
         uses: actions/upload-artifact@v4
         with:
           name: helm_package
-          path: ./helm_packages/*.tgz
+          path: ./*.tgz
 
 
   helm_push:
