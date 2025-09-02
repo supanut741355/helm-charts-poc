@@ -102,7 +102,7 @@ jobs:
         run: |
           git config user.name "supanut741355"
           git config user.email "supanut.wizard@gmail.com"
-          git add index.yaml 
+          git add "${CHART_NAME}-${CHART_VERSION}.tgz" index.yaml 
           git commit -m "Update Helm repo index"
           git push origin gh-pages
 
