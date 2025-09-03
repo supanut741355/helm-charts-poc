@@ -12,9 +12,9 @@ permissions:
 
 env:
   # TODO  this env can be fix
-  GITHUB_ACCOUNT_NAME: supanut741355
+  GITHUB_ACCOUNT_NAME: MyOrderDevelop
   GITHUB_REGISTRY_NAME: dev_space
-  GITHUB_PAGE_URL: https://supanut741355.github.io/helm-charts-poc/
+  GITHUB_PAGE_URL: https://myorder-intelligence.github.io/helm-charts-poc/
 
   # TODO this env should get value from Chart.yaml
   CHART_NAME: omegared
